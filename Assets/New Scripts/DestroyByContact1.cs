@@ -35,7 +35,7 @@ public class DestroyByContact1 : MonoBehaviour
                 float speed = GetComponent<Mover1>().Speed;
                 GameEvents.HitShield((int)(speed * 2));
             }
-            else
+            else if (!shieldedHit)
                 GameEvents.DestroyAsteroid();
         }
 
