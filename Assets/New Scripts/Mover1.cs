@@ -13,4 +13,12 @@ public class Mover1 : MonoBehaviour
         Speed = Random.Range(_minSpeed, _maxSpeed);
         GetComponent<Rigidbody>().linearVelocity = transform.forward * Speed;
     }
+
+    public void SetSpeed(float min, float max)
+    {
+        _minSpeed = min;
+        _maxSpeed = max;
+        Speed = Random.Range(_minSpeed, _maxSpeed);
+        GetComponent<Rigidbody>().linearVelocity = transform.forward * Speed;
+    }
 }
