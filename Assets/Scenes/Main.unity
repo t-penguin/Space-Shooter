@@ -946,7 +946,7 @@ MonoBehaviour:
   _enemies: []
   _modifiers: []
   _hazardHorizontalRange: {x: -7, y: 7}
-  _hazardZ: 15
+  _hazardZ: 11
   _startDelay: 2
   _waveInterval: 2.5
   _spawnInterval: 1
