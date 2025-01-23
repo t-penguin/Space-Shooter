@@ -3,7 +3,6 @@ using UnityEngine;
 public class DestroyByContact1 : MonoBehaviour
 {
     [SerializeField] private GameObject _explosion;
-    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -39,7 +38,6 @@ public class DestroyByContact1 : MonoBehaviour
                 GameEvents.DestroyAsteroid();
         }
 
-        // TODO: FIX THIS NOT WORKING
         // Piercing bolts should not be destroyed on collision
         // The player should not be destroyed by this object if their barrier is up
         bool isPiercingBolt = other.CompareTag("Piercing");
