@@ -24,11 +24,12 @@ public class DestroyByContact1 : MonoBehaviour
 
         // Asteroid destruction triggers an event
         bool isAsteroid = CompareTag("Asteroid");
-        bool shieldedHit = other.CompareTag("Barrier");
+        bool barrierHit = other.CompareTag("Barrier");
+        bool shieldedHit = other.CompareTag("Player") && other.GetComponent<PlayerController1>().IsShielded;
         if (isAsteroid)
         {
             Debug.Log($"Asteroid is colliding with {other.name} tagged with {other.tag}");
-            if (shieldedHit)
+            if (barrierHit)
             {
                 // An asteroid colliding with a shielded player should damage the barrier
                 float speed = GetComponent<Mover1>().Speed;
@@ -41,7 +42,7 @@ public class DestroyByContact1 : MonoBehaviour
         // Piercing bolts should not be destroyed on collision
         // The player should not be destroyed by this object if their barrier is up
         bool isPiercingBolt = other.CompareTag("Piercing");
-        if (!isPiercingBolt && !shieldedHit)
+        if (!isPiercingBolt && !barrierHit && !shieldedHit)
             Destroy(other.gameObject);
 
         // Explosion VFX
