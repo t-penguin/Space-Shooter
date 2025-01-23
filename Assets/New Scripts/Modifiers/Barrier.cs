@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Barrier : HealthBasedModifier
@@ -20,8 +21,7 @@ public class Barrier : HealthBasedModifier
 
     public override void RemoveEffect()
     {
-        _player.ToggleBarrier(false);
-        base.RemoveEffect();
+        StartCoroutine(DelayRemove());
     }
 
     public void Damage(int value)
@@ -31,5 +31,12 @@ public class Barrier : HealthBasedModifier
         {
             RemoveEffect();
         }
+    }
+
+    private IEnumerator DelayRemove()
+    {
+        yield return new WaitForEndOfFrame();
+        _player.ToggleBarrier(false);
+        base.RemoveEffect();
     }
 }
